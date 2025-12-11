@@ -2621,23 +2621,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Utilizador\\.nuget\\packages\\": {},
+    "C:\\Users\\vtele\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\LojaOnline\\LojaOnline.csproj",
+      "projectUniqueName": "C:\\Users\\vtele\\Documents\\ATEC\\UC CET\\UC 00605 - Programar para a web, na vertente servidor (server-side) - Dario Quental\\ProjetoFinal_LojaOnline_Tiago_Vanessa\\ProjectFinalVT\\Loja-Online\\LojaOnline\\LojaOnline\\LojaOnline.csproj",
       "projectName": "LojaOnline",
-      "projectPath": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\LojaOnline\\LojaOnline.csproj",
-      "packagesPath": "C:\\Users\\Utilizador\\.nuget\\packages\\",
-      "outputPath": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\LojaOnline\\obj\\",
+      "projectPath": "C:\\Users\\vtele\\Documents\\ATEC\\UC CET\\UC 00605 - Programar para a web, na vertente servidor (server-side) - Dario Quental\\ProjetoFinal_LojaOnline_Tiago_Vanessa\\ProjectFinalVT\\Loja-Online\\LojaOnline\\LojaOnline\\LojaOnline.csproj",
+      "packagesPath": "C:\\Users\\vtele\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\vtele\\Documents\\ATEC\\UC CET\\UC 00605 - Programar para a web, na vertente servidor (server-side) - Dario Quental\\ProjetoFinal_LojaOnline_Tiago_Vanessa\\ProjectFinalVT\\Loja-Online\\LojaOnline\\LojaOnline\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Utilizador\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\vtele\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2665,7 +2665,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net8.0": {
@@ -2719,7 +2719,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

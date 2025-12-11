@@ -1,19 +1,27 @@
-using Microsoft.EntityFrameworkCore;
+Ôªøusing Microsoft.EntityFrameworkCore;
 using LojaOnline.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-// --- InÌcio do CÛdigo para Adicionar ---
+
+// --- Configura√ß√£o CORS ---
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.AllowAnyOrigin()  // Permite qualquer origem (para desenvolvimento)
+              .AllowAnyMethod()  // Permite GET, POST, PUT, DELETE, etc.
+              .AllowAnyHeader(); // Permite qualquer header
+    });
+});
+// --- Fim Configura√ß√£o CORS ---
+
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<ApiDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-
-// --- Fim do CÛdigo para Adicionar ---
-
 // Add services to the container.
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -26,7 +34,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// Comentado para desenvolvimento - permite usar apenas HTTP
+// app.UseHttpsRedirection();
+
+// --- Ativar CORS (IMPORTANTE: deve vir antes de UseAuthorization) ---
+app.UseCors("AllowFrontend");
+// --- Fim Ativar CORS ---
 
 app.UseAuthorization();
 
