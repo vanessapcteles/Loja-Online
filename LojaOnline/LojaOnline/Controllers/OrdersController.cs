@@ -1,5 +1,6 @@
 using LojaOnline.Data;
 using LojaOnline.Models;
+using LojaOnline.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,10 +16,12 @@ namespace LojaOnline.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly ApiDbContext _context;
+        private readonly IExternalPaymentService _paymentService;
 
-        public OrdersController(ApiDbContext context)
+        public OrdersController(ApiDbContext context, IExternalPaymentService paymentService)
         {
             _context = context;
+            _paymentService = paymentService;
         }
 
         // GET: api/Orders/MyOrders
@@ -61,7 +64,7 @@ namespace LojaOnline.Controllers
                 var userId = long.Parse(userIdClaim);
                 Console.WriteLine($"[OrderDebug] Parsed User ID: {userId}");
                 
-                // 1. Create the Order shell
+                // Create the Order shell
                 var order = new Order
                 {
                     UserId = userId,
@@ -71,7 +74,7 @@ namespace LojaOnline.Controllers
 
                 decimal total = 0;
 
-                // 2. Fetch products and create items
+                // Fetch products and create items
                 Console.WriteLine($"[OrderDebug] Processing {cartItems.Count} items");
                 foreach (var item in cartItems)
                 {
@@ -104,12 +107,33 @@ namespace LojaOnline.Controllers
                     return BadRequest("Não foi possível processar a encomenda (Total 0).");
                 }
 
-                // 3. Save to DB
+                // Save to DB
                 _context.Orders.Add(order);
                 await _context.SaveChangesAsync();
                 
                 Console.WriteLine($"[OrderDebug] Order created with ID: {order.Id}");
-                return Ok(new { Message = "Encomenda criada com sucesso!", OrderId = order.Id });
+
+                // Processar pagamento com Polly (Retry + Circuit Breaker)
+                var paymentSuccess = await _paymentService.ProcessPaymentAsync(order.TotalAmount, order.Id.ToString());
+
+                if (paymentSuccess)
+                {
+                    order.Status = "Pago";
+                    Console.WriteLine($"[OrderDebug] Payment successful for Order {order.Id}");
+                }
+                else
+                {
+                    order.Status = "Pagamento Falhado";
+                    Console.WriteLine($"[OrderDebug] Payment failed for Order {order.Id}");
+                }
+
+                await _context.SaveChangesAsync();
+
+                return Ok(new { 
+                    Message = paymentSuccess ? "Encomenda criada e paga com sucesso!" : "Encomenda criada mas pagamento falhou.", 
+                    OrderId = order.Id,
+                    PaymentStatus = order.Status
+                });
             }
             catch (Exception ex)
             {

@@ -45,6 +45,25 @@
             max-height: 400px;
             overflow-y: auto;
         }
+
+        /* Payment Method Options */
+        .payment-method-option {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .payment-method-option:hover {
+            background-color: #f8f9fa !important;
+            border-color: #0d6efd !important;
+        }
+
+        .payment-method-option input:checked+label {
+            color: #0d6efd !important;
+        }
+
+        .payment-method-option input:checked~* {
+            border-color: #0d6efd;
+        }
     </style>
 </head>
 
@@ -149,6 +168,209 @@
                         <button type="button" class="btn btn-success" onclick="CartService.checkout()">Finalizar
                             Compra</button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Pagamento -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">💳 Dados de Pagamento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="paymentForm">
+                    <div class="modal-body">
+                        <div class="alert alert-info">
+                            <strong>ℹ️ Modo de Demonstração</strong><br>
+                            Este é um formulário de demonstração. Os dados não serão processados por um gateway real.
+                        </div>
+
+                        <!-- Seleção de Método de Pagamento -->
+                        <h6 class="mb-3 text-dark">Método de Pagamento</h6>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <div class="form-check payment-method-option p-3 border rounded bg-white">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="methodCard"
+                                        value="card" checked>
+                                    <label class="form-check-label w-100 text-dark" for="methodCard">
+                                        <strong>💳 Cartão de Crédito/Débito</strong><br>
+                                        <small class="text-muted">Visa, Mastercard, American Express</small>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check payment-method-option p-3 border rounded bg-white">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="methodMBWay"
+                                        value="mbway">
+                                    <label class="form-check-label w-100 text-dark" for="methodMBWay">
+                                        <strong>📱 MB Way</strong><br>
+                                        <small class="text-muted">Pagamento por telemóvel</small>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check payment-method-option p-3 border rounded bg-white">
+                                    <input class="form-check-input" type="radio" name="paymentMethod"
+                                        id="methodTransfer" value="transfer">
+                                    <label class="form-check-label w-100 text-dark" for="methodTransfer">
+                                        <strong>🏦 Transferência Bancária</strong><br>
+                                        <small class="text-muted">Pagamento por referência</small>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check payment-method-option p-3 border rounded bg-white">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="methodPayPal"
+                                        value="paypal">
+                                    <label class="form-check-label w-100 text-dark" for="methodPayPal">
+                                        <strong>🅿️ PayPal</strong><br>
+                                        <small class="text-muted">Pagamento seguro online</small>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Campos de Cartão (mostrado por padrão) -->
+                        <div id="cardFields">
+
+                            <h6 class="mb-3 text-dark">Informações do Cartão</h6>
+                            <div class="row g-3 mb-4">
+                                <div class="col-12">
+                                    <label class="form-label text-dark">Número do Cartão</label>
+                                    <input type="text" class="form-control bg-white text-dark"
+                                        placeholder="1234 5678 9012 3456" pattern="[0-9\s]{13,19}" maxlength="19"
+                                        id="cardNumber">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-dark">Validade</label>
+                                    <input type="text" class="form-control bg-white text-dark" placeholder="MM/AA"
+                                        pattern="(0[1-9]|1[0-2])\/[0-9]{2}" maxlength="5" id="cardExpiry">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-dark">CVV</label>
+                                    <input type="text" class="form-control bg-white text-dark" placeholder="123"
+                                        pattern="[0-9]{3,4}" maxlength="4" id="cardCVV">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Campos MB Way (oculto por padrão) -->
+                        <div id="mbwayFields" style="display: none;">
+                            <h6 class="mb-3 text-dark">Dados MB Way</h6>
+                            <div class="row g-3 mb-4">
+                                <div class="col-12">
+                                    <label class="form-label text-dark">Número de Telemóvel</label>
+                                    <input type="tel" class="form-control bg-white text-dark" placeholder="912 345 678"
+                                        pattern="[0-9]{9}" maxlength="9" id="mbwayPhone">
+                                    <small class="text-muted">Receberá uma notificação no seu telemóvel para confirmar o
+                                        pagamento</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Campos Transferência (oculto por padrão) -->
+                        <div id="transferFields" style="display: none;">
+                            <h6 class="mb-3 text-dark">Dados para Transferência</h6>
+                            <div class="alert alert-warning">
+                                <strong>📋 Referência Multibanco</strong><br>
+                                <div class="mt-2">
+                                    <strong>Entidade:</strong> 12345<br>
+                                    <strong>Referência:</strong> <span id="transferRef">000 000 000</span><br>
+                                    <strong>Valor:</strong> <span id="transferAmount">€0.00</span>
+                                </div>
+                                <small class="d-block mt-2">A encomenda será processada após confirmação do pagamento
+                                    (até 24h)</small>
+                            </div>
+                        </div>
+
+                        <!-- Campos PayPal (oculto por padrão) -->
+                        <div id="paypalFields" style="display: none;">
+                            <h6 class="mb-3 text-dark">PayPal</h6>
+                            <div class="alert alert-info">
+                                <strong class="text-dark">🅿️ Pagamento via PayPal</strong><br>
+                                <p class="mb-2 mt-2 text-dark">Será redirecionado para o PayPal para completar o
+                                    pagamento de
+                                    forma segura.</p>
+                            </div>
+                        </div>
+
+                        <h6 class="mb-3 text-dark">Morada de Faturação</h6>
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label text-dark">Nome Completo</label>
+                                <input type="text" class="form-control bg-white text-dark" placeholder="João Silva"
+                                    required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-dark">Morada</label>
+                                <input type="text" class="form-control bg-white text-dark"
+                                    placeholder="Rua Example, 123" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-dark">Código Postal</label>
+                                <input type="text" class="form-control bg-white text-dark" placeholder="1234-567"
+                                    pattern="[0-9]{4}-[0-9]{3}" maxlength="8" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-dark">Cidade</label>
+                                <input type="text" class="form-control bg-white text-dark" placeholder="Lisboa"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 p-3 bg-light rounded">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-dark"><strong>Subtotal:</strong></span>
+                                <strong id="paymentSubtotal" class="text-dark">€0.00</strong>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-dark"><strong>Envio:</strong></span>
+                                <strong class="text-dark">€5.00</strong>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between">
+                                <span class="h5 mb-0 text-dark">Total:</span>
+                                <strong class="h5 mb-0 text-primary" id="paymentTotal">€0.00</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-lock-fill me-1" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
+                            </svg>
+                            Confirmar Pagamento
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Sucesso -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center py-5">
+                    <div class="mb-4 text-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
+                            class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                        </svg>
+                    </div>
+                    <h3 class="mb-3">🎉 Encomenda Confirmada!</h3>
+                    <p class="text-muted mb-2">Número da Encomenda: <strong id="orderIdDisplay">#0000</strong></p>
+                    <p class="text-muted mb-4">Status do Pagamento: <strong
+                            id="paymentStatusDisplay">Processado</strong></p>
+                    <p class="small text-muted">Receberá um email de confirmação em breve.</p>
+                    <button class="btn btn-primary mt-3" data-bs-dismiss="modal">Continuar a Comprar</button>
                 </div>
             </div>
         </div>
@@ -300,6 +522,94 @@
 
             document.getElementById('cartTotal').textContent = '€' + CartService.getTotal().toFixed(2);
         }
+
+        // Handler para o formulário de pagamento
+        document.addEventListener('DOMContentLoaded', () => {
+            const paymentForm = document.getElementById('paymentForm');
+            const paymentModal = document.getElementById('paymentModal');
+
+            // Atualizar totais quando o modal de pagamento abrir
+            paymentModal.addEventListener('show.bs.modal', () => {
+                const subtotal = CartService.getTotal();
+                const shipping = 5.00;
+                const total = subtotal + shipping;
+
+                document.getElementById('paymentSubtotal').textContent = '€' + subtotal.toFixed(2);
+                document.getElementById('paymentTotal').textContent = '€' + total.toFixed(2);
+
+                // Atualizar referência de transferência
+                const transferRef = Math.floor(Math.random() * 999999999).toString().padStart(9, '0');
+                document.getElementById('transferRef').textContent = transferRef.match(/.{1,3}/g).join(' ');
+                document.getElementById('transferAmount').textContent = '€' + total.toFixed(2);
+            });
+
+            // Alternar entre métodos de pagamento
+            const paymentMethods = document.querySelectorAll('input[name="paymentMethod"]');
+            const cardFields = document.getElementById('cardFields');
+            const mbwayFields = document.getElementById('mbwayFields');
+            const transferFields = document.getElementById('transferFields');
+            const paypalFields = document.getElementById('paypalFields');
+
+            paymentMethods.forEach(method => {
+                method.addEventListener('change', (e) => {
+                    // Ocultar todos os campos
+                    cardFields.style.display = 'none';
+                    mbwayFields.style.display = 'none';
+                    transferFields.style.display = 'none';
+                    paypalFields.style.display = 'none';
+
+                    // Remover required de todos os campos específicos
+                    document.getElementById('cardNumber').removeAttribute('required');
+                    document.getElementById('cardExpiry').removeAttribute('required');
+                    document.getElementById('cardCVV').removeAttribute('required');
+                    document.getElementById('mbwayPhone').removeAttribute('required');
+
+                    // Mostrar campos do método selecionado
+                    switch (e.target.value) {
+                        case 'card':
+                            cardFields.style.display = 'block';
+                            document.getElementById('cardNumber').setAttribute('required', 'required');
+                            document.getElementById('cardExpiry').setAttribute('required', 'required');
+                            document.getElementById('cardCVV').setAttribute('required', 'required');
+                            break;
+                        case 'mbway':
+                            mbwayFields.style.display = 'block';
+                            document.getElementById('mbwayPhone').setAttribute('required', 'required');
+                            break;
+                        case 'transfer':
+                            transferFields.style.display = 'block';
+                            break;
+                        case 'paypal':
+                            paypalFields.style.display = 'block';
+                            break;
+                    }
+                });
+            });
+
+            // Submeter formulário de pagamento
+            paymentForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                // Desabilitar botão durante processamento
+                const submitBtn = paymentForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>A processar...';
+
+                // Simular delay de processamento (para parecer mais real)
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                // Processar pagamento
+                await CartService.processPayment({
+                    // Aqui poderia enviar os dados do formulário se necessário
+                    // mas como é mock, apenas processamos a encomenda
+                });
+
+                // Restaurar botão
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            });
+        });
     </script>
 </body>
 

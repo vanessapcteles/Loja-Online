@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using LojaOnline.Data;
 using LojaOnline.Services;
+using LojaOnline.MockServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Polly;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -24,6 +26,23 @@ builder.Services.AddControllers();
 
 // Registar AuthService
 builder.Services.AddScoped<IAuthService, AuthService>();
+
+// --- Configurar Redis Cache ---
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration["Redis:Configuration"];
+    options.InstanceName = builder.Configuration["Redis:InstanceName"];
+});
+builder.Services.AddSingleton<ICacheService, RedisCacheService>();
+// --- Fim Configuração Redis ---
+
+// --- Configurar HttpClient para Pagamentos ---
+builder.Services.AddHttpClient<IExternalPaymentService, ExternalPaymentService>(client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["ExternalServices:PaymentApiUrl"]!);
+    client.Timeout = TimeSpan.FromSeconds(30);
+});
+// --- Fim Configuração HttpClient ---
 
 // Configurar Autenticação JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -53,6 +72,9 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    // Iniciar WireMock para simular serviços externos
+    WireMockSetup.Start();
 }
 
 // Comentado para desenvolvimento - permite usar apenas HTTP

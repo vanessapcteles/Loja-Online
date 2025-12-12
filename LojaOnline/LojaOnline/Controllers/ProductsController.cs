@@ -1,5 +1,6 @@
 ﻿using LojaOnline.Data;
 using LojaOnline.Models;
+using LojaOnline.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,24 +15,35 @@ namespace LojaOnline.Controllers
     {
         // --- INJEÇÃO DE DEPENDÊNCIA ---
 
-        // 1. Remove a lista 'static' e o contador
+        // Remove a lista 'static' e o contador
 
-        // 2. Declara uma variável privada para o DbContext
+        // Declara uma variável privada para o DbContext
         private readonly ApiDbContext _context;
+        private readonly ICacheService _cache;
+        private const string PRODUCTS_CACHE_KEY = "all_products";
 
-        // 3. Pede o DbContext no construtor (Injeção de Dependência)
-        public ProductsController(ApiDbContext context)
+        // Pede o DbContext e CacheService no construtor (Injeção de Dependência)
+        public ProductsController(ApiDbContext context, ICacheService cache)
         {
             _context = context;
+            _cache = cache;
         }
 
         // --- FIM DA INJEÇÃO ---
 
 
-        // 1. GET ALL (Atualizado para ser assíncrono)
+        // GET ALL (Com Cache Redis)
         [HttpGet("GetProducts")]
         public async Task<IActionResult> GetProducts()
         {
+            // Tentar obter do cache primeiro
+            var cachedProducts = await _cache.GetAsync<List<Product>>(PRODUCTS_CACHE_KEY);
+            if (cachedProducts != null)
+            {
+                return Ok(cachedProducts);
+            }
+
+            // Se não estiver em cache, buscar da BD
             var products = await _context.Products.Select(x =>new Product
             {
                 Id = x.Id,
@@ -45,10 +57,14 @@ namespace LojaOnline.Controllers
                 CreatedAt = x.CreatedAt
 
             }).ToListAsync();
+
+            // Guardar em cache por 5 minutos
+            await _cache.SetAsync(PRODUCTS_CACHE_KEY, products, TimeSpan.FromMinutes(5));
+
             return Ok(products);
         }
 
-        // 2. GET BY ID 
+        // GET BY ID 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProduct(long id)
         {
@@ -61,7 +77,7 @@ namespace LojaOnline.Controllers
         }
         
 
-        // 3. CREATE (Atualizado)
+        // CREATE (Com invalidação de cache)
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateProduct([FromBody] Product product)
@@ -69,11 +85,14 @@ namespace LojaOnline.Controllers
             _context.Products.Add(product); // Adiciona o produto ao DbSet
             await _context.SaveChangesAsync(); // Salva as mudanças na BD
 
+            // Invalidar cache
+            await _cache.RemoveAsync(PRODUCTS_CACHE_KEY);
+
             return Ok(product);
         }
        
 
-        // 4. UPDATE (Atualizado)
+        // UPDATE (Com invalidação de cache)
         [HttpPut("EditProduct")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditProduct([FromBody] Product product )
@@ -89,15 +108,23 @@ namespace LojaOnline.Controllers
                     .SetProperty(p => p.Gender, product.Gender)
                     .SetProperty(p => p.ImageUrl, product.ImageUrl)
                 );
+
+            // Invalidar cache
+            await _cache.RemoveAsync(PRODUCTS_CACHE_KEY);
+
             return Ok(product);
         }
 
-        // 5. DELETE 
+        // DELETE (Com invalidação de cache)
         [HttpDelete("DeleteProduct")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteProduct(long productId)
         {
             var rows = await _context.Products.Where(p => p.Id == productId).ExecuteDeleteAsync();
+
+            // Invalidar cache
+            await _cache.RemoveAsync(PRODUCTS_CACHE_KEY);
+
             return Ok(true);
         }
     }

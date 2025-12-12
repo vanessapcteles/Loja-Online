@@ -98,7 +98,7 @@ const CartService = {
         return this.getItems().reduce((sum, item) => sum + (item.price * item.quantity), 0);
     },
 
-    // Finalizar Compra (Enviar para API)
+    // Finalizar Compra - Mostrar formulário de pagamento
     async checkout() {
         const items = this.getItems();
         if (items.length === 0) {
@@ -111,6 +111,21 @@ const CartService = {
             window.location.href = 'login.html';
             return;
         }
+
+        // Fechar modal do carrinho e abrir modal de pagamento
+        const cartModal = bootstrap.Modal.getInstance(document.getElementById('cartModal'));
+        if (cartModal) cartModal.hide();
+
+        // Aguardar animação de fecho
+        setTimeout(() => {
+            const paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
+            paymentModal.show();
+        }, 300);
+    },
+
+    // Processar pagamento (chamado após submeter formulário)
+    async processPayment(paymentData) {
+        const items = this.getItems();
 
         // Preparar dados para a API (DTO: ProductId, Quantity, Size)
         const orderData = items.map(item => ({
@@ -128,40 +143,20 @@ const CartService = {
                 body: JSON.stringify(orderData)
             });
 
-            // Sucesso UX: Limpar e mostrar mensagem no modal
+            // Sucesso: Limpar carrinho
             this.clear();
 
-            // Atualizar o conteúdo do modal diretamente
-            const container = document.getElementById('cartItemsContainer');
-            const footer = document.querySelector('#cartModal .modal-footer');
+            // Fechar modal de pagamento
+            const paymentModal = bootstrap.Modal.getInstance(document.getElementById('paymentModal'));
+            if (paymentModal) paymentModal.hide();
 
-            if (container) {
-                container.innerHTML = `
-                    <div class="text-center py-5">
-                        <div class="mb-3 text-success">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                            </svg>
-                        </div>
-                        <h3>Compra Finalizada!</h3>
-                        <p class="text-muted">A encomenda #${response.orderId || ''} foi registada com sucesso.</p>
-                        <button class="btn btn-primary mt-3" data-bs-dismiss="modal">
-                            Continuar a Comprar
-                        </button>
-                    </div>
-                `;
-            }
-
-            // Esconde o footer (onde está o botão de checkout) para não confundir
-            if (footer) footer.style.display = 'none';
-
-            // Resetar o footer quando o modal fechar (para a próxima vez)
-            const modalEl = document.getElementById('cartModal');
-            const resetFooter = () => {
-                if (footer) footer.style.display = 'flex';
-                modalEl.removeEventListener('hidden.bs.modal', resetFooter);
-            };
-            modalEl.addEventListener('hidden.bs.modal', resetFooter);
+            // Mostrar mensagem de sucesso
+            setTimeout(() => {
+                const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                document.getElementById('orderIdDisplay').textContent = response.orderId || 'N/A';
+                document.getElementById('paymentStatusDisplay').textContent = response.paymentStatus || 'Processado';
+                successModal.show();
+            }, 300);
 
         } catch (error) {
             alert('Erro ao finalizar encomenda: ' + error.message);
