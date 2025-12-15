@@ -1,38 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\",
+  "WorkspaceRootPath": "C:\\Users\\Utilizador\\Desktop\\Loja-Online\\LojaOnline\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|c:\\dev\\tiago_rosa_tpsi0525\\uc605\\lojaonline\\lojaonline\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|solutionrelative:lojaonline\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|c:\\dev\\tiago_rosa_tpsi0525\\uc605\\lojaonline\\lojaonline\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|c:\\users\\utilizador\\desktop\\loja-online\\lojaonline\\lojaonline\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|solutionrelative:lojaonline\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|c:\\dev\\tiago_rosa_tpsi0525\\uc605\\lojaonline\\lojaonline\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|solutionrelative:lojaonline\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|c:\\dev\\tiago_rosa_tpsi0525\\uc605\\lojaonline\\lojaonline\\data\\apidbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|c:\\users\\utilizador\\desktop\\loja-online\\lojaonline\\lojaonline\\data\\apidbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|solutionrelative:lojaonline\\data\\apidbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|c:\\dev\\tiago_rosa_tpsi0525\\uc605\\lojaonline\\lojaonline\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|solutionrelative:lojaonline\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|c:\\users\\utilizador\\desktop\\loja-online\\lojaonline\\lojaonline\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|solutionrelative:lojaonline\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|c:\\dev\\tiago_rosa_tpsi0525\\uc605\\lojaonline\\lojaonline\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|solutionrelative:lojaonline\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|c:\\users\\utilizador\\desktop\\loja-online\\lojaonline\\lojaonline\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|solutionrelative:lojaonline\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|c:\\dev\\tiago_rosa_tpsi0525\\uc605\\lojaonline\\lojaonline\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|c:\\users\\utilizador\\desktop\\loja-online\\lojaonline\\lojaonline\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|solutionrelative:lojaonline\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|c:\\users\\utilizador\\desktop\\loja-online\\lojaonline\\lojaonline\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|solutionrelative:lojaonline\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|c:\\dev\\tiago_rosa_tpsi0525\\uc605\\lojaonline\\lojaonline\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|solutionrelative:lojaonline\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|c:\\users\\utilizador\\desktop\\loja-online\\lojaonline\\lojaonline\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|solutionrelative:lojaonline\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|c:\\users\\utilizador\\desktop\\loja-online\\lojaonline\\lojaonline\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4844CC18-BEDF-0441-717E-46E75D629799}|LojaOnline\\LojaOnline.csproj|solutionrelative:lojaonline\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,21 +42,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\LojaOnline\\Program.cs",
-              "RelativeDocumentMoniker": "LojaOnline\\Program.cs",
-              "ToolTip": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\LojaOnline\\Program.cs",
-              "RelativeToolTip": "LojaOnline\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T19:41:59.454Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
@@ -64,35 +51,49 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Utilizador\\Desktop\\Loja-Online\\LojaOnline\\LojaOnline\\Program.cs",
+              "RelativeDocumentMoniker": "LojaOnline\\Program.cs",
+              "ToolTip": "C:\\Users\\Utilizador\\Desktop\\Loja-Online\\LojaOnline\\LojaOnline\\Program.cs",
+              "RelativeToolTip": "LojaOnline\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T19:41:59.454Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\LojaOnline\\appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Utilizador\\Desktop\\Loja-Online\\LojaOnline\\LojaOnline\\appsettings.json",
               "RelativeDocumentMoniker": "LojaOnline\\appsettings.json",
-              "ToolTip": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\LojaOnline\\appsettings.json",
+              "ToolTip": "C:\\Users\\Utilizador\\Desktop\\Loja-Online\\LojaOnline\\LojaOnline\\appsettings.json",
               "RelativeToolTip": "LojaOnline\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-11-11T19:40:18.031Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "ApiDbContext.cs",
-              "DocumentMoniker": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\LojaOnline\\Data\\ApiDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Utilizador\\Desktop\\Loja-Online\\LojaOnline\\LojaOnline\\Data\\ApiDbContext.cs",
               "RelativeDocumentMoniker": "LojaOnline\\Data\\ApiDbContext.cs",
-              "ToolTip": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\LojaOnline\\Data\\ApiDbContext.cs",
+              "ToolTip": "C:\\Users\\Utilizador\\Desktop\\Loja-Online\\LojaOnline\\LojaOnline\\Data\\ApiDbContext.cs",
               "RelativeToolTip": "LojaOnline\\Data\\ApiDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAYwBMAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T19:23:38.667Z"
+              "WhenOpened": "2025-11-11T19:23:38.667Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "OrderItem.cs",
-              "DocumentMoniker": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\LojaOnline\\Models\\OrderItem.cs",
+              "DocumentMoniker": "C:\\Users\\Utilizador\\Desktop\\Loja-Online\\LojaOnline\\LojaOnline\\Models\\OrderItem.cs",
               "RelativeDocumentMoniker": "LojaOnline\\Models\\OrderItem.cs",
-              "ToolTip": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\LojaOnline\\Models\\OrderItem.cs",
+              "ToolTip": "C:\\Users\\Utilizador\\Desktop\\Loja-Online\\LojaOnline\\LojaOnline\\Models\\OrderItem.cs",
               "RelativeToolTip": "LojaOnline\\Models\\OrderItem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -100,36 +101,35 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Order.cs",
-              "DocumentMoniker": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\LojaOnline\\Models\\Order.cs",
+              "DocumentMoniker": "C:\\Users\\Utilizador\\Desktop\\Loja-Online\\LojaOnline\\LojaOnline\\Models\\Order.cs",
               "RelativeDocumentMoniker": "LojaOnline\\Models\\Order.cs",
-              "ToolTip": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\LojaOnline\\Models\\Order.cs",
+              "ToolTip": "C:\\Users\\Utilizador\\Desktop\\Loja-Online\\LojaOnline\\LojaOnline\\Models\\Order.cs",
               "RelativeToolTip": "LojaOnline\\Models\\Order.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T19:11:41.424Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-11T19:11:41.424Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ProductsController.cs",
-              "DocumentMoniker": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\LojaOnline\\Controllers\\ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\Utilizador\\Desktop\\Loja-Online\\LojaOnline\\LojaOnline\\Controllers\\ProductsController.cs",
               "RelativeDocumentMoniker": "LojaOnline\\Controllers\\ProductsController.cs",
-              "ToolTip": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\LojaOnline\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\Utilizador\\Desktop\\Loja-Online\\LojaOnline\\LojaOnline\\Controllers\\ProductsController.cs",
               "RelativeToolTip": "LojaOnline\\Controllers\\ProductsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-11T18:50:39.816Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "User.cs",
-              "DocumentMoniker": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\LojaOnline\\Models\\User.cs",
+              "DocumentMoniker": "C:\\Users\\Utilizador\\Desktop\\Loja-Online\\LojaOnline\\LojaOnline\\Models\\User.cs",
               "RelativeDocumentMoniker": "LojaOnline\\Models\\User.cs",
-              "ToolTip": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\LojaOnline\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\Utilizador\\Desktop\\Loja-Online\\LojaOnline\\LojaOnline\\Models\\User.cs",
               "RelativeToolTip": "LojaOnline\\Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -137,13 +137,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "Product.cs",
-              "DocumentMoniker": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\LojaOnline\\Models\\Product.cs",
+              "DocumentMoniker": "C:\\Users\\Utilizador\\Desktop\\Loja-Online\\LojaOnline\\LojaOnline\\Models\\Product.cs",
               "RelativeDocumentMoniker": "LojaOnline\\Models\\Product.cs",
-              "ToolTip": "C:\\DEV\\Tiago_Rosa_TPSI0525\\UC605\\LojaOnline\\LojaOnline\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\Utilizador\\Desktop\\Loja-Online\\LojaOnline\\LojaOnline\\Models\\Product.cs",
               "RelativeToolTip": "LojaOnline\\Models\\Product.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-11T18:49:03.347Z"
             }

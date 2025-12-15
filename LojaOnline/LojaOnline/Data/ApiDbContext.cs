@@ -17,7 +17,7 @@ namespace LojaOnline.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
 
-        // (Opcional, mas boa prática) Configura relações
+        // Configura relações
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
