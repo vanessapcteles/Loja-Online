@@ -1,0 +1,26 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: lojaonline-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_DATABASE: LojaOnline
+    ports:
+      - "3306:3306"
+    volumes:
+      # Mount specific files to ensure execution order: usage DB creation -> users -> store schema
+      - ./LojaOnline/LojaOnline/init-db-prod.sql:/docker-entrypoint-initdb.d/01_db.sql
+      - ./LojaOnline/LojaOnline/init-users.sql:/docker-entrypoint-initdb.d/02_users.sql
+      - ./LojaOnline/LojaOnline/init-store.sql:/docker-entrypoint-initdb.d/03_store.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  redis:
+    image: redis:alpine
+    container_name: lojaonline-redis
+    restart: always
+    ports:
+      - "6379:6379"
